@@ -1,6 +1,6 @@
 # -GPRS-to-Thinkspeak-with-AT-command
    
-![alt tag](https://www.google.com/url?sa=i&url=https%3A%2F%2Frandomnerdtutorials.com%2Fesp32-http-post-ifttt-thingspeak-arduino%2F&psig=AOvVaw0KaD-ccPUTwxgIcxCHmkOB&ust=1677177616774000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLC18dXjqf0CFQAAAAAdAAAAABAJ)  
+![alt tag](https://github.com/ingeniously/GPRS_Sim800C_HTTPS_Protocol_Stack_With_Thinkspeak/blob/main/image/ESP32-HTTP-POST-with-Arduino-IDE-IFTTT-ThingSpeak.webp)  
 
 ## Description
 
