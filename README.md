@@ -1,6 +1,6 @@
 # -GPRS-to-Thinkspeak-with-AT-command
    
-![alt tag](https://user-images.githubusercontent.com/111455408/189918123-297385aa-64e2-41b9-ab9b-b62d2c9ffce3.jpg)  
+![alt tag](https://www.google.com/url?sa=i&url=https%3A%2F%2Frandomnerdtutorials.com%2Fesp32-http-post-ifttt-thingspeak-arduino%2F&psig=AOvVaw0KaD-ccPUTwxgIcxCHmkOB&ust=1677177616774000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCLC18dXjqf0CFQAAAAAdAAAAABAJ)  
 
 ## Description
 
