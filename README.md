@@ -1,6 +1,6 @@
 # -GPRS-to-Thinkspeak-with-AT-command
    
-![alt tag](https://github.com/ingeniously/GPRS_Sim800C_HTTPS_Protocol_Stack_With_Thinkspeak/blob/main/image/ESP32-HTTP-POST-with-Arduino-IDE-IFTTT-ThingSpeak.webp)  
+![alt tag](https://github.com/ingeniously/GPRS_Sim800C_HTTPS_Protocol_Stack_With_Thinkspeak/blob/main/image/HTTP-POST-Thingspeak-ESP32.webp)  
 
 ## Description
 
