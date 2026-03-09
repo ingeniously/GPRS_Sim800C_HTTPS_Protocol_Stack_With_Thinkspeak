@@ -4,6 +4,7 @@
 
 ## Description
 
+
    Le General Packet Radio Service ou GPRS est une norme (protocole réseau) pour la téléphonie mobile dérivée du GSM et complémentaire
  de celui-ci, permettant un débit de données plus élevé. On le qualifie souvent de 2,5G ou 2G+. 
  Le G est l'abréviation de génération et le 2,5 indique que c'est une technologie à mi-chemin entre le GSM (deuxième génération) et l'UMTS (troisième génération).
