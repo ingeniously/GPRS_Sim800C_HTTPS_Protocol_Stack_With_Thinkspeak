@@ -4,159 +4,149 @@
 
 ## Description
 
+The General Packet Radio Service or GPRS is a standard (network protocol) for mobile telephony derived from GSM and complementary to it, allowing a higher data rate. It is often referred to as 2.5G or 2G+. 
+The G stands for generation and the 2.5 indicates that it is a technology halfway between GSM (second generation) and UMTS (third generation).
+GPRS is an extension of the GSM protocol: it adds packet transmission compared to the latter. 
+This method is better suited for data transmission.
 
-   Le General Packet Radio Service ou GPRS est une norme (protocole réseau) pour la téléphonie mobile dérivée du GSM et complémentaire
- de celui-ci, permettant un débit de données plus élevé. On le qualifie souvent de 2,5G ou 2G+. 
- Le G est l'abréviation de génération et le 2,5 indique que c'est une technologie à mi-chemin entre le GSM (deuxième génération) et l'UMTS (troisième génération).
-Le GPRS est une extension du protocole GSM : il ajoute par rapport à ce dernier la transmission par paquets. 
-Cette méthode est plus adaptée à la transmission des données
-
-## Exemple de Carte concu avec Le module SIM800C
+## Example of a Board Designed with the SIM800C Module
 
 ![alt tag](https://user-images.githubusercontent.com/111455408/189918128-64a172f3-ab05-4124-b025-ba71c4d3b04f.jpg)
 
-Les Modules GPRS concu par Makerlab Sont concu principalement avec le  SIM800C et un Avr(Principalement l'Atmega 328P
+The GPRS modules designed by Makerlab are primarily built with the SIM800C and an AVR (mostly the Atmega 328P).
 
 ![alt tag](https://user-images.githubusercontent.com/111455408/189923075-5ba58787-f590-4c0c-8117-a25f340d09b6.jpg)
 ![alt tag](https://user-images.githubusercontent.com/111455408/189918090-29212168-2329-493e-af07-ac463209a728.jpg)
 ![alt tag](https://user-images.githubusercontent.com/111455408/189918013-09578672-104e-4303-a9ee-fb07f7768f69.png)
 ![alt tag](https://user-images.githubusercontent.com/111455408/189917973-81ebb7eb-d89b-4124-83bc-1915e777bc68.png)
 
-
-
- Il est possible avec ses modules de transmettre des informations a travers les
-   - Sms ,
-   - Les Appels et
-   - via Internet en utilisant des protocols internets comme le HTTP,Le HTTPS et le TCP/IP
+With these modules, it is possible to transmit information via:
+   - SMS
+   - Calls
+   - The Internet using internet protocols like HTTP, HTTPS, and TCP/IP
  
-Dans ce tutoriel vous trouverrez principalement comment Etablir une connection a unserveur en utilisant le protocols Htpp qui est differnet du https(Donneé plus securisé et Cryptée
+In this tutorial, you will primarily learn how to establish a connection to a server using the HTTP protocol, which is different from HTTPS (which handles data that is more secure and encrypted).
 
+## AT Commands
 
-## les Commandes AT
+AT commands are instructions used to control a modem. AT stands for Attention. Every command line starts with "AT" or "at". 
+In general, GSM/GPRS modems designed for wireless applications support AT commands better than regular mobile phones. The AT commands we will need are:
 
-  Les commandes AT sont des instructions utilisées pour contrôler un modem. AT est l'abréviation d’Attention. Chaque ligne de commande commence par "AT" ou "at". 
-En général, les modems GSM / GPRS conçus pour les applications sans fil prennent mieux en charge les commandes AT que les téléphones mobiles ordinaires. Les commandes AT dont on aura besoin sont :
-
-   - **AT** ; //Vérifier si le modules est Fonctionnelle     
-   - **AT+SAPBR=3,1,"Contype","GPRS"** ; // Connection du type GPRS
-   - **AT+SAPBR=3,1,"APN","internet.tn"** ; //l’APN de fournisseur Réseau       
-   - **AT+SAPBR=1,1** ; //Ouvrir la communication GPRS
-   - **AT+SAPBR=2,1** ; //Envoyer des requêtes à travers la communication GPRS
-   - **AT+HTTPINIT** ; //Initialiser le protocole http
-   - **AT+HTTPPARA="CID",1** ; //paramètres pour http
-   - **AT+HTTPPARA="URL","http://api.thingspeak.com/update?api_key=M9HMBKTN87ITELK7&f ield1=0"** ;  //Mettre l'adresse URL (Universal ressource Locator) C’est à dire L'API du serveur
-   - **AT+HTTPACTION=0** ; //commencer la GET session 
-   - **AT+HTTPREAD** ; //Lire les données qui viennent du serveur HTTP 
-   - **AT+HTTPTERM** ; //Arrêter le protocole http
+   - **AT** ; // Check if the module is functional     
+   - **AT+SAPBR=3,1,"Contype","GPRS"** ; // GPRS type connection
+   - **AT+SAPBR=3,1,"APN","internet.tn"** ; // Network provider's APN       
+   - **AT+SAPBR=1,1** ; // Open GPRS communication
+   - **AT+SAPBR=2,1** ; // Send requests via GPRS communication
+   - **AT+HTTPINIT** ; // Initialize HTTP protocol
+   - **AT+HTTPPARA="CID",1** ; // HTTP parameters
+   - **AT+HTTPPARA="URL","http://api.thingspeak.com/update?api_key=M9HMBKTN87ITELK7&field1=0"** ;  // Set the URL (Universal Resource Locator), i.e., the server API
+   - **AT+HTTPACTION=0** ; // Start the GET session 
+   - **AT+HTTPREAD** ; // Read data coming from the HTTP server 
+   - **AT+HTTPTERM** ; // Stop the HTTP protocol
         
-## Le protoccople HTTP
+## The HTTP Protocol
 
- Le protocole HTTP (HyperText Transfer Protocol) est le protocole le plus utilisé sur Internet depuis 1990. La version 0.9 était uniquement destinée à transférer des données sur Internet en particulier des pages Web écrites en HTML.
-En tant que protocole requête-réponse, HTTP offre aux utilisateurs un moyen d’interagir avec des ressources Web. On citera, à ce titre, les fichiers HTML en transmettant des messages hypertexte entre les clients et les serveurs. Les clients HTTP utilisent généralement des connexions TCP (Transmission Control Protocol) pour communiquer avec les serveurs
+The HTTP (HyperText Transfer Protocol) is the most widely used protocol on the Internet since 1990. Version 0.9 was solely intended to transfer data on the Internet, particularly Web pages written in HTML.
+As a request-response protocol, HTTP gives users a way to interact with Web resources. It transmits hypertext messages between clients and servers. HTTP clients typically use TCP (Transmission Control Protocol) connections to communicate with servers.
   
-  La communication entre le navigateur et le serveur se fait en deux temps :
+Communication between the browser and the server happens in two steps:
 
-   - **Le navigateur effectue une requête http**
-   - **Le serveur traite la requête puis envoie une réponse http**
+   - **The browser makes an HTTP request**
+   - **The server processes the request and then sends an HTTP response**
          
-         
- ### Avantages
+### Advantages
        
-Ce protocole possède plusieurs avantages tels que :
+This protocol has several advantages, such as:
 
-   - Fournir un moyen standard pour les navigateurs Web et les serveurs de communiquer entre eux.
-   - HTTP n’est généralement pas filtré par les pares-feux réseaux conçus pour autoriser le trafic Web. 
-   - HTTP utilise un schéma d’adressage avancé. Il attribue une adresse IP avec des noms reconnaissables afin que celle-ci soit facilement identifiable dans le World Wide Web.
+   - Providing a standard way for Web browsers and servers to communicate with each other.
+   - HTTP is usually not filtered by network firewalls designed to allow Web traffic. 
+   - HTTP uses an advanced addressing scheme. It assigns an IP address with recognizable names so that it can be easily identified on the World Wide Web.
 
+## HTTP Commands
 
-## Les Commandes HTTP
-
-           Tableau lites des commandes HTTP
+Table listing HTTP commands:
            
-| Commande  | Description          |
+| Command  | Description          |
 | :--------------- |:---------------:|
-|GET  |Requête de la ressource située à l'URL spécifiée |
-| HEAD | Requête de l'en-tête de la ressource située à l'URL spécifiée |
-| POST |Envoi de données au programme situé à l'URL spécifiée |
-| PUT |Envoi de données à l'URL spécifiée |
-| POST |Suppression de la ressource située à l'URL spécifiée|
+| GET | Request the resource located at the specified URL |
+| HEAD | Request the header of the resource located at the specified URL |
+| POST | Send data to the program located at the specified URL |
+| PUT | Send data to the specified URL |
+| DELETE | Delete the resource located at the specified URL |
 
 
-## Le serveur ThingSpeak 
+## The ThingSpeak Server 
 
-![alt tag]() logo Thinkspeak
+![alt tag]() ThingSpeak logo
 
-  ThingSpeak est un service de plate-forme d’analyse données qui permet d'agréger, de
-visualiser et d'analyser des flux de données en direct dans le cloud. On peut envoyer des
-données à ThingSpeak à partir d’une application via le protocole HTTPS. 
-Il existe plusieurs serveurs dédiés à l’IoT. Les plus connus sont:
+ThingSpeak is an analytics platform service that allows you to aggregate, visualize, and analyze live data streams in the cloud. You can send data to ThingSpeak from your devices via the HTTPS protocol. 
+There are several servers dedicated to IoT. The most well-known are:
 
    - **Ubidots**
-   - **Nodered** 
+   - **Node-RED** 
    - **Cayenne**
    - **Firebase**
   
-Mais l’une de ces plates-formes d’applications IoT qui offre une grande variété de capacités d’analyse est ThingSpeak. 
-Pour utiliser ThingSpeak, on doit s’inscrire et créer un canal. Une fois crée, on peut 
-envoyer les données, permettant à ThingSpeak de les traiter et les récupérer.
+However, one of these IoT application platforms that offers a wide variety of analytics capabilities is ThingSpeak. 
+To use ThingSpeak, you must sign up and create a channel. Once created, you can send data, allowing ThingSpeak to process and retrieve it.
 
-Ce serveur permet de :
+This server allows you to:
 
-   - **Configurer les comptes et les canaux** : Informations sur les canaux, les    utilisateurs et les licences ThingSpeak.
-   - **Écrire des données sur le canal** : par l’utilisation des API pour mettre à jour les canaux avec des logiciels ou des appareils.
-   - **Lire les données du canal** : par l’utilisation API pour lire les chaînes à l'aide de logiciels ou d'appareils.
-   - **Préparer et analyser les données** : Transformer et répondre aux données dans MATLAB. 
-   - **Visualiser les données** : Transformer et visualiser des données dans MATLAB.
-   - Analyse spécialisée avec MATLAB : Exemples ThingSpeak qui montrent l'utilisation des outils avancés disponibles dans les boîtes à outils complémentaires
+   - **Configure accounts and channels**: Information about channels, users, and ThingSpeak licenses.
+   - **Write data to the channel**: Using APIs to update channels via software or devices.
+   - **Read data from the channel**: Using APIs to read strings using software or devices.
+   - **Prepare and analyze data**: Transform and interact with data in MATLAB. 
+   - **Visualize data**: Transform and visualize data in MATLAB.
+   - **Specialized analysis with MATLAB**: ThingSpeak examples that show the use of advanced tools available in add-on toolboxes.
 
  
  ![alt tag](https://user-images.githubusercontent.com/111455408/189918004-f9956cf7-a5fb-4215-8c56-be1e6d8360e0.png) 
  
-**Les liens ci dessous sont les liens utiliser For Read and Write in Thinkspeak**
+**The links below are the ones used for Read and Write in ThingSpeak**
   ![alt tag](https://user-images.githubusercontent.com/111455408/189921141-cbee3869-49b1-4845-a0ae-f43ea171364f.png) 
  
- # Stucture Programme
+ # Program Structure
  
- On commence par ajouter la librairie **« Software Serial .h»** et en définissant aussi les pins des broches Rx et Tx pour la communication série **UART** .
-On déclare ensuite toutes les variables et les énumères actions qui seront utilisées dans le corps du programme écrit en **C/C++**.
-La structure de programme principale est décrite ci-dessous. Cinq fonctions sont utilisées:
+ We begin by adding the **"SoftwareSerial.h"** library and defining the RX and TX pins for **UART** serial communication.
+Next, we declare all the variables and action enumerations that will be used in the body of the program written in **C/C++**.
+The main program structure is described below. Five functions are used:
 
-   - **La fonction resetBuffer()** : Elle sert à remettre la variable « buffer » qui stocke les réponses des commandes AT à 0.
+   - **The resetBuffer() function**: Used to reset the "buffer" variable, which stores responses from AT commands, back to 0.
 
-   - **La fonction Send_Command ()** : Elle sert à envoyer les commandes AT et d’en recevoir la réponse grâce au ‘Serial. Read’. Les paramètres de cette fonction sont la commande à envoyer et le temps entre deux envois successifs.
+   - **The Send_Command() function**: Used to send AT commands and receive the response through 'Serial.read()'. The parameters of this function are the command to be sent and the time between two successive transmissions.
 
-   - **La fonction setup ()** : La fonction setup () est appelée au démarrage du programme Cette fonction est d’abord utilisé pour activer le GRPS en envoyant une impulsion LOW de 1 seconde a la boche ‘Powerkey’ du microcontrôleur,
-ensuite à définir la vitesse de transmission des données au SIM800C et la vitesse de l’affichage des données localement sur le moniteur série exprimée en baud. 
-Elle permet finalement d’établir la connexion avec le réseau ThingSpeak avec les commandes AT dédiées au protocole http.
+   - **The setup() function**: The setup() function is called when the program starts. This function is first used to activate GPRS by sending a 1-second LOW pulse to the microcontroller's 'Powerkey' pin. 
+It then sets the data transmission speed to the SIM800C and the data display speed locally on the serial monitor expressed in baud. 
+Finally, it establishes the connection with the ThingSpeak network using the AT commands dedicated to the HTTP protocol.
 
-      Ci-dessous un aperçu sur la fonction setup().   
-```C++  
+      Here is an overview of the setup() function:
+```cpp  
 void setup()
 {
   Serial.begin(9600);
   dbug.begin(9600);
-    dbug.println("Get Session");/* Afficher get session  */
- // pinMode(9,OUTPUT);/*  Demarer Sim800c grace au Powerkey */
-    pinMode(A0,OUTPUT);
+  dbug.println("Get Session"); /* Display get session */
+  // pinMode(9,OUTPUT); /* Start SIM800C using the Powerkey */
+  pinMode(A0,OUTPUT);
   pinMode(9,OUTPUT);
-   digitalWrite(9,LOW);
+  digitalWrite(9,LOW);
   delay(1000);
   digitalWrite(9,HIGH);
   delay(1000);
   digitalWrite(9,LOW);
   delay(1000);
-             send_Command("AT+SAPBR=3,1,\"APN\",\"weborange\"\r\n"); 
-  send_Command("AT+SAPBR=3,1,\"Contype,\"GPRS\"\r\n");  
+  send_Command("AT+SAPBR=3,1,\"APN\",\"weborange\"\r\n"); 
+  send_Command("AT+SAPBR=3,1,\"Contype\",\"GPRS\"\r\n");  
   send_Command("AT+SAPBR=1,1",3000);
   send_Command("AT+HTTPINIT\r\n"); 
   send_Command("AT+HTTPPARA=\"CID\",1\r\n");
   send_Command("AT+HTTPPARA=\"URL\",\"http://api.thingspeak.com/channels/1748594/fields/1.json?results=1\"\r\n");
 }
 ```
-   - **La fonction Loop ()** : Elle exécute une routine d’instruction (envoi d’AT+HTTPACTION) pour une lecture continue des données envoyées depuis l’application en fixant le temps d’attente afin que les données soient reçues et analysées dans les bons délais.
-Dans ce programme le temps d’attente avant chaque réception a été fixée de valeur a 5 ms.
-Ci-dessous un aperçu sur la fonction Loop().
-```C++  
+   - **The loop() function**: Executes an instruction routine (sending AT+HTTPACTION) to continuously read the data sent from the application by setting a wait time so that the data is received and analyzed in a timely manner.
+In this program, the wait time before each reception was set to a value of 5 ms.
+Here is an overview of the loop() function:
+```cpp  
 void loop()
 { 
   unsigned long now = millis();
@@ -179,9 +169,9 @@ void loop()
 }
 ```
 
-   - **La fonction Analyse** : Celle-ci accomplit un rôle important dans la mesure où elle permet d’analyser les réponses des commandes AT envoyées et de les afficher sur le moniteur série pour qu’on puisse diagnostiquer d’éventuelle erreur de connexion. 
-Grâce à cette fonction on peut sauvegarder la réponse à la commande AT+HTTPREAD qui renvoie une trame de donnée du type :	
-```C++  
+   - **The Analyse function**: This plays an important role as it analyzes the responses of the sent AT commands and displays them on the serial monitor so we can diagnose any potential connection errors. 
+Thanks to this function, we can save the response to the AT+HTTPREAD command, which returns a data frame such as:
+```cpp  
 void Analyse(byte b) {
 
   buffer[pos++] = b;
@@ -200,11 +190,11 @@ void Analyse(byte b) {
                               }
                       else if ( b == ':' ) {   
                                  if ( strcmp(buffer, "+HTTPACTION:") == 0 ) {
-                          dbug.println("Reception de HTTPACTION");
+                          dbug.println("Received HTTPACTION");
                            Working_Case = HTTPACTION_TYPE;
                               }
                                    else if ( strcmp(buffer, "+HTTPREAD:") == 0 ) {
-                                       dbug.println("Recption de HTTPREAD");            
+                                       dbug.println("Received HTTPREAD");            
                                          Working_Case =HTTPREAD_LENGTH;
                                                }
                                                resetBuffer();
@@ -316,4 +306,4 @@ case HTTPREAD_CONTENT:
  
 ![alt tag](https://user-images.githubusercontent.com/111455408/189917998-030f156f-1a0b-436a-bcb5-ac278666541e.png) 
 
- Cette trame est reçue caractère par caractère et stockée dans une variable appelé Buffer.  Elle contient la date, l’heure, la longitude, le nom de la chaine et du canal ThingSpeak utilisé. Cette trame de donnée est lue par le microcontrôleur et affichée sur le moniteur série de l’Arduino
+ This frame is received character by character and stored in a variable called Buffer. It contains the date, time, longitude, chain name, and the ThingSpeak channel used. This data frame is read by the microcontroller and displayed on the Arduino's serial monitor.
